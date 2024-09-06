@@ -28,7 +28,7 @@ loader.load('https://pyrosoda.github.io/BA_model_viewer/Background.png', functio
         }
 
         // PlaneGeometry 생성 (배경으로 사용할 평면)
-        const geometry = new THREE.PlaneGeometry(planeWidth, planeHeight);
+        const geometry = new THREE.PlaneGeometry(planeWidth * 1.5, planeHeight * 1.5);
 
         if (!backgroundPlane) {
             // 처음 로드할 때 메쉬를 추가
