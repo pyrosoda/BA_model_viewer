@@ -1,7 +1,10 @@
 const scene = new THREE.Scene();
 
 scene.background = new THREE.Color(0x87CEEB);
-
+const loader = new THREE.TextureLoader();
+loader.load('https://pyrosoda.github.io/BA_model_viewer/Background.png', function(texture) {
+    scene.background = texture; // 씬의 배경을 텍스처로 설정
+});
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 const renderer = new THREE.WebGLRenderer();
