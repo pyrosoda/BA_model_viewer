@@ -16,24 +16,25 @@ loader.load('https://pyrosoda.github.io/BA_model_viewer/Background.png', functio
         const imgAspect = imgWidth / imgHeight;
         let planeWidth, planeHeight;
 
-        // 창 비율에 따라 이미지 비율을 유지하면서 조정
+        // 이미지 비율에 맞춰 Plane 크기를 설정 (화면에 꽉 차도록)
         if (screenAspect > imgAspect) {
-            // 화면이 더 넓을 때: 세로 크기를 기준으로 맞춤
-            planeHeight = 10; // 세로 크기 고정
-            planeWidth = planeHeight * imgAspect; // 비율에 따라 가로 크기 조정
+            // 화면이 더 넓을 때: 세로 크기를 고정하고 가로 크기를 맞춤
+            planeHeight = 2 * Math.tan((camera.fov * Math.PI) / 360) * camera.position.z;
+            planeWidth = planeHeight * imgAspect;
         } else {
-            // 화면이 더 높을 때: 가로 크기를 기준으로 맞춤
-            planeWidth = 10; // 가로 크기 고정
-            planeHeight = planeWidth / imgAspect; // 비율에 따라 세로 크기 조정
+            // 화면이 더 높을 때: 가로 크기를 고정하고 세로 크기를 맞춤
+            planeWidth = 2 * Math.tan((camera.fov * Math.PI) / 360) * camera.position.z;
+            planeHeight = planeWidth / imgAspect;
         }
 
-        // PlaneGeometry 생성 (종횡비에 맞게 조정)
-        const geometry = new THREE.PlaneGeometry(planeWidth, planeHeight); // 크기를 조절할 수 있음
+        // PlaneGeometry 생성 (배경으로 사용할 평면)
+        const geometry = new THREE.PlaneGeometry(planeWidth, planeHeight);
+
         if (!backgroundPlane) {
             // 처음 로드할 때 메쉬를 추가
             const material = new THREE.MeshBasicMaterial({ map: texture });
             backgroundPlane = new THREE.Mesh(geometry, material);
-            backgroundPlane.position.z = -10; // 카메라 뒤쪽에 배치
+            backgroundPlane.position.z = -camera.position.z; // 카메라 바로 뒤에 배치
             scene.add(backgroundPlane);
         } else {
             // 이후 리사이즈 시 PlaneGeometry만 업데이트
