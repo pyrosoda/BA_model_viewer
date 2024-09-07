@@ -80,10 +80,6 @@ fbxLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original_Mesh.f
             // 첫 번째 애니메이션 클립 선택
         const selectedClip = object.animations[2]; // 선택한 애니메이션 클립
         console.log(`재생할 애니메이션: ${selectedClip.name}`);
-
-        // AnimationMixer 생성 및 클립 재생
-        mixer = new THREE.AnimationMixer(object);
-        mixer.clipAction(selectedClip).play();
         });
     } else {
         console.log('애니메이션 클립이 없습니다.');
@@ -98,6 +94,10 @@ fbxLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original_Mesh.f
     object.rotation.x = Math.PI * 3 / 2; // 270도
     scene.add(object);
     console.log('FBX 모델이 로드되었습니다.');
+    
+    // AnimationMixer 생성 및 클립 재생
+    mixer = new THREE.AnimationMixer(object);
+    mixer.clipAction(selectedClip).play();
 }, undefined, function(error) {
     console.error('FBX 로드 실패:', error);
 });
