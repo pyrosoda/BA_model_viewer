@@ -72,6 +72,11 @@ animate();
 const fbxLoader = new FBXLoader();
 fbxLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original_Mesh.fbx', function(object) {
     object.scale.set(1, 1, 1); // 모델 크기 조정
+    object.traverse(function(child) {
+        if (child.isMesh) {
+            child.material.map = textureLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original_Body.png'); // 텍스처 로드
+        }
+    });
     scene.add(object);
     console.log('FBX 모델이 로드되었습니다.');
 }, undefined, function(error) {
