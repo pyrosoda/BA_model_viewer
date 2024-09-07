@@ -64,13 +64,6 @@ const directionalLight = new THREE.DirectionalLight(0xffffff, 1); // 방향광
 directionalLight.position.set(1, 2, 1).normalize();
 scene.add(directionalLight);
 
-
-function animate() {
-    requestAnimationFrame(animate);
-    renderer.render(scene, camera);
-}
-
-animate();
 // TextureLoader
 
 const textureLoader = new THREE.TextureLoader();
@@ -106,6 +99,13 @@ fbxLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original_Mesh.f
 }, undefined, function(error) {
     console.error('FBX 로드 실패:', error);
 });
+
+function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
+
+animate();
 
 // 창 크기가 변경될 때 렌더러와 카메라 업데이트
 window.addEventListener('resize', () => {
