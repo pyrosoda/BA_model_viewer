@@ -1,6 +1,6 @@
 // Three.js와 FBXLoader를 import
-import * as THREE from "./lib/three.module.js";
-import { FBXLoader } from "./lib/FBXLoader.js";
+import * as THREE from './lib/three.module.js';
+import { FBXLoader } from './lib/FBXLoader.js';
 
 
 const scene = new THREE.Scene();
