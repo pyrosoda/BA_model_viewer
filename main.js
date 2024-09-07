@@ -59,6 +59,10 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
+//light
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1); // 방향광
+directionalLight.position.set(1, 2, 1).normalize();
+scene.add(directionalLight);
 
 
 function animate() {
