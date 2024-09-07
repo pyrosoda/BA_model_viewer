@@ -97,13 +97,20 @@ fbxLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original_Mesh.f
     const selectedClip = object.animations[3]; // 선택한 애니메이션 클립
     console.log(`재생할 애니메이션: ${selectedClip.name}`);
     mixer = new THREE.AnimationMixer(object);
-    mixer.clipAction(selectedClip).play();
+    const action = mixer.clipAction(selectedClip);
+     action.play(); // 애니메이션 재생
 }, undefined, function(error) {
     console.error('FBX 로드 실패:', error);
 });
 
 function animate() {
     requestAnimationFrame(animate);
+
+    const delta = clock.getDelta(); // 시간 경과 계산
+        if (mixer) {
+            mixer.update(delta); // 애니메이션 업데이트
+        }
+    
     renderer.render(scene, camera);
 }
 
