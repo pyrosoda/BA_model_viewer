@@ -94,7 +94,7 @@ fbxLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original_Mesh.f
     
     // AnimationMixer 생성 및 클립 재생
     
-    const selectedClip = object.animations[2]; // 선택한 애니메이션 클립
+    const selectedClip = object.animations[3]; // 선택한 애니메이션 클립
     console.log(`재생할 애니메이션: ${selectedClip.name}`);
     mixer = new THREE.AnimationMixer(object);
     mixer.clipAction(selectedClip).play();
