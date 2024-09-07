@@ -90,7 +90,6 @@ fbxLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original_Mesh.f
             child.material.needsUpdate = true; // 재질 업데이트
         }
     });
-    object.rotation.x = Math.PI * 3 / 2; // 270도
     scene.add(object);
     console.log('FBX 모델이 로드되었습니다.');
     
