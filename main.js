@@ -80,7 +80,7 @@ const fbxLoader = new FBXLoader();
 fbxLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original_Mesh.fbx', function(object) {
     object.scale.set(1, 1, 1); // 모델 크기 조정
     const texture = textureLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original_Body.png');
-    object.traverse(function(child) => {
+    object.traverse(function(child) {
         if (child.isMesh) {
             child.material.map = texture; // 텍스처 로드
             child.material.needsUpdate = true; // 재질 업데이트
