@@ -68,6 +68,8 @@ scene.add(directionalLight);
 
 const textureLoader = new THREE.TextureLoader();
 
+let mixer; // AnimationMixer 변수 선언
+
 // FBXLoader로 모델 로드
 const fbxLoader = new FBXLoader();
 fbxLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original_Mesh.fbx', function(object) {
