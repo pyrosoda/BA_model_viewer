@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { FBXLoader } from 'FBXLoader';
-
+import { TextureLoader } from 'TextureLoader';
 
 const scene = new THREE.Scene();
 
@@ -67,14 +67,19 @@ function animate() {
 }
 
 animate();
+// TextureLoader
+
+const textureLoader = new TextureLoader();
 
 // FBXLoader로 모델 로드
 const fbxLoader = new FBXLoader();
 fbxLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original_Mesh.fbx', function(object) {
     object.scale.set(1, 1, 1); // 모델 크기 조정
-    object.traverse(function(child) {
+    const texture = textureLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original_Body.png');
+    object.traverse(function(child) => {
         if (child.isMesh) {
-            child.material.map = textureLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original_Body.png'); // 텍스처 로드
+            child.material.map = texture; // 텍스처 로드
+            child.material.needsUpdate = true; // 재질 업데이트
         }
     });
     scene.add(object);
