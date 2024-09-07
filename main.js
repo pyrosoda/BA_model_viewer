@@ -78,6 +78,14 @@ const textureLoader = new THREE.TextureLoader();
 // FBXLoader로 모델 로드
 const fbxLoader = new FBXLoader();
 fbxLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original_Mesh.fbx', function(object) {
+    if (object.animations.length > 0) {
+        console.log('애니메이션 클립 목록:');
+        object.animations.forEach((clip, index) => {
+            console.log(`애니메이션 ${index + 1}: ${clip.name}`);
+        });
+    } else {
+        console.log('애니메이션 클립이 없습니다.');
+    }
     object.scale.set(2, 2, 2); // 모델 크기 조정
     const texture = textureLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original_Body.png');
     object.traverse(function(child) {
