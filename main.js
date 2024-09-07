@@ -82,10 +82,11 @@ fbxLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original_Mesh.f
     const texture = textureLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original_Body.png');
     object.traverse(function(child) {
         if (child.isMesh) {
-            child.material.map = texture; // 텍스처 로드
+            // child.material.map = texture; // 텍스처 로드
             child.material.needsUpdate = true; // 재질 업데이트
         }
     });
+    object.rotation.x = Math.PI * 3 / 2;
     object.rotation.y = Math.PI * 3 / 2; // 180도
     object.rotation.z = Math.PI / 2; // 90도
     scene.add(object);
