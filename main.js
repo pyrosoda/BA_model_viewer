@@ -56,12 +56,6 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
-
-
 
 function animate() {
     requestAnimationFrame(animate);
@@ -71,6 +65,16 @@ function animate() {
 }
 
 animate();
+
+// FBXLoader로 모델 로드
+const fbxLoader = new THREE.FBXLoader();
+fbxLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original.fbx', function(object) {
+    object.scale.set(0.05, 0.05, 0.05); // 모델 크기 조정
+    scene.add(object);
+    console.log('FBX 모델이 로드되었습니다.');
+}, undefined, function(error) {
+    console.error('FBX 로드 실패:', error);
+});
 
 // 창 크기가 변경될 때 렌더러와 카메라 업데이트
 window.addEventListener('resize', () => {
