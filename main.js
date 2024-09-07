@@ -82,6 +82,13 @@ fbxLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original_Mesh.f
         console.log('애니메이션 클립 목록:');
         object.animations.forEach((clip, index) => {
             console.log(`애니메이션 ${index + 1}: ${clip.name}`);
+            // 첫 번째 애니메이션 클립 선택
+        const selectedClip = object.animations[0]; // 선택한 애니메이션 클립
+        console.log(`재생할 애니메이션: ${selectedClip.name}`);
+
+        // AnimationMixer 생성 및 클립 재생
+        mixer = new THREE.AnimationMixer(object);
+        mixer.clipAction(selectedClip).play();
         });
     } else {
         console.log('애니메이션 클립이 없습니다.');
