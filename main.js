@@ -70,7 +70,7 @@ animate();
 
 // FBXLoader로 모델 로드
 const fbxLoader = new FBXLoader();
-fbxLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original.fbx', function(object) {
+fbxLoader.load('https://pyrosoda.github.io/BA_model_viewer/Izuna_Original_Mesh.fbx', function(object) {
     object.scale.set(0.05, 0.05, 0.05); // 모델 크기 조정
     scene.add(object);
     console.log('FBX 모델이 로드되었습니다.');
