@@ -1,6 +1,6 @@
 // Three.js와 FBXLoader를 import
-import * as THREE from 'https://pyrosoda.github.io/BA_model_viewer/node_modules/three.module.js';
-import { FBXLoader } from 'https://pyrosoda.github.io/BA_model_viewer/node_modules/FBXLoader.js';
+import * as THREE from '../node_modules/three.module.js';
+import { FBXLoader } from '../node_modules/FBXLoader.js';
 
 
 const scene = new THREE.Scene();
