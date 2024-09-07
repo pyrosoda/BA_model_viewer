@@ -4,7 +4,7 @@ scene.background = new THREE.Color(0x87CEEB);
 const loader = new THREE.TextureLoader();
 let backgroundPlane;
 
-loader.load('https://pyrosoda.github.io/BA_model_viewer/Background.png', function(texture) {
+loader.load('https://pyrosoda.github.io/BA_model_viewer/Background1.png', function(texture) {
     const imgWidth = texture.image.width;
     const imgHeight = texture.image.height;
 
