@@ -1,6 +1,5 @@
 import * as THREE from 'three';
 import { FBXLoader } from 'FBXLoader';
-import { TextureLoader } from 'TextureLoader';
 
 const scene = new THREE.Scene();
 
@@ -69,7 +68,7 @@ function animate() {
 animate();
 // TextureLoader
 
-const textureLoader = new TextureLoader();
+const textureLoader = new THREE.TextureLoader();
 
 // FBXLoader로 모델 로드
 const fbxLoader = new FBXLoader();
